@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<website>
+  <!--
+     Pages Definitions
+    -->
+  <page-definitions>
+    <page id="/error/400" />
+    <page id="/error/401" />
+    <page id="/error/403" />
+    <page id="/error/404" />
+    <page id="/error/500" />
+  </page-definitions>
+
+  <!--
+     Pages URI Mappings
+    -->
+  <page-mappings>
+    <page id="/home" uri="/">
+      <alias uri="/index" />
+    </page>
+  </page-mappings>
+
+  <!--
+     Error Pages
+    -->
+  <error-pages>
+    <error name="400" id="/error/400" />
+    <error name="401" id="/error/401" />
+    <error name="403" id="/error/403" />
+    <error name="404" id="/error/404" />
+    <error name="500" id="/error/500" />
+  </error-pages>
+
+  <!--
+     Pages Definitions
+    -->
+  <template-mappings>
+    <!-- Global Templates -->
+    <global-templates>
+      <template name="site" base="/content/templates/base.inc.php">
+        <section name="header" file="/content/templates/header.inc.php" />
+        <section name="body" />
+        <section name="footer" file="/content/templates/footer.inc.php" />
+        <section name="left" file="/content/templates/left/base.inc.php" />
+        <section name="left-hierarchy" />
+        <section name="left-about" />
+      </template>
+    </global-templates>
+  </template-mappings>
+</website>
