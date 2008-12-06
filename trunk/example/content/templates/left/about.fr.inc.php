@@ -1,0 +1,3 @@
+<h1>À propos</h1>
+<p>Phasellus et ante. Morbi ante ligula, tristique vitae, laoreet ut, congue non, urna. Suspendisse eleifend, nisi eu accumsan fringilla, libero nisl euismod velit, at iaculis elit nunc nec nisl. Sed tristique. In ut tellus ac purus tincidunt tincidunt. Praesent non orci egestas lectus pulvinar aliquam. Ut aliquam mi ut metus. Suspendisse accumsan blandit turpis. Maecenas dapibus est. Aliquam pede leo, fermentum ut, convallis ut, lacinia elementum, nulla.</p>
+<p><a href="<?php echo Toolkit::pageURL('/contact'); ?>">Contact Us</a></p>
