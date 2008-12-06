@@ -1,0 +1,225 @@
+<?xml version="1.0" ?>
+<website lang="en">
+  <!-- 
+     Resources Declarations
+    -->
+  <resource name="global" file="/content/resources/global.en.properties" />
+
+  <!--
+     Pages Definitions
+    -->
+  <page-definitions>
+    <page id="/home">
+      <property name="title" value="Home" />
+    </page>
+    <page id="/products">
+      <property name="title" value="Products" />
+    </page>
+    <page id="/products/special" action="/content/products/special/index.php">
+      <property name="title" value="Special" />
+    </page>
+    <page id="/products/special/test1">
+      <property name="title" value="Test 1" />
+    </page>
+    <page id="/products/special/test2">
+      <property name="title" value="Test 2" />
+    </page>
+    <page id="/products/foobar1">
+      <property name="title" value="Foobar 1" />
+    </page>
+    <page id="/products/foobar2">
+      <property name="title" value="Foobar 2" />
+    </page>
+    <page id="/products/foobar3">
+      <property name="title" value="Foobar 3" />
+    </page>
+    <page id="/products/foobar4">
+      <property name="title" value="Google" />
+    </page>
+    <page id="/ctrl" action="/content/ctrl/index.php" iscontroller="true">
+      <property name="title" value="Controller" />
+    </page>
+    <page id="/sitemap">
+      <property name="title" value="Sitemap" />
+    </page>
+    <page id="/contact">
+      <property name="title" value="Contact Us" />
+    </page>
+    <page id="/contact/email" action="/content/email/form.php">
+      <property name="title" value="Email" />
+    </page>
+  </page-definitions>
+
+  <!--
+     Pages URI Mappings
+    -->
+  <page-mappings>
+    <page id="/home" uri="/home" />
+    <page id="/products" uri="/products" />
+    <page id="/products/special" uri="/products/special" />
+    <page id="/products/special/test1" uri="/products/special/test1" />
+    <page id="/products/special/test2" uri="/products/special/test2" />
+    <page id="/products/foobar1" uri="/products/foobar1" />
+    <page id="/products/foobar2" uri="/products/foobar2" />
+    <page id="/products/foobar3" uri="/products/foobar3" />
+    <page id="/products/foobar4" link="http://www.google.com" />
+    <page id="/ctrl" uri="/ctrl" />
+    <page id="/sitemap" uri="/sitemap" />
+    <page id="/contact" uri="/contact" />
+    <page id="/contact/email" uri="/contact/email" />
+  </page-mappings>
+
+  <!--
+     Website Hierarchy
+    -->
+  <hierarchy>
+    <page id="/home" />
+    <page id="/products">
+      <page id="/products/special">
+        <page id="/products/special/test1" />
+        <page id="/products/special/test2" visibility="menu" />
+      </page>
+      <page id="/products/foobar1" />
+      <page id="/products/foobar2" />
+      <page id="/products/foobar3" />
+      <page id="/products/foobar4" />
+    </page>
+    <page id="/ctrl" />
+    <page id="/sitemap" />
+    <page id="/contact">
+      <page id="/contact/email" visibility="hidden" />
+    </page>
+  </hierarchy>
+
+  <!--
+     Templates
+    -->
+  <template-mappings>
+    <!-- Global Templates -->
+    <global-templates>
+      <template name="site.en" extends="site">
+        <section name="left-about" file="/content/templates/left/about.en.inc.php" />
+      </template>
+
+      <template name="product" extends="site.en">
+        <section name="left-hierarchy" file="/content/templates/left/hierarchy.inc.php">
+          <property name="parent-page-id" value="/products" />
+        </section>
+      </template>
+
+      <template name="notavailable" extends="site.en">
+        <section name="body" file="/content/notavailable.en.php" />
+      </template>
+    </global-templates>
+
+    <!-- Page Specific Templates -->
+    <page-templates id="/error/400" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/error-pages/400.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/error/401" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/error-pages/401.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/error/403" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/error-pages/403.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/error/404" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/error-pages/404.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/error/500" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/error-pages/500.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/home" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/home.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/products" default="default">
+      <template name="default" extends="product">
+        <section name="body" file="/content/products/index.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/products/special" default="default">
+      <template name="default" extends="product">
+        <section name="body" file="/content/products/special/index.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/products/special/test1" default="default">
+      <template name="default" extends="product">
+        <section name="body" file="/content/products/special/test1.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/products/special/test2" default="default">
+      <template name="default" extends="product">
+        <section name="body" file="/content/products/special/test2.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/products/foobar1" default="default">
+      <template name="default" extends="product">
+        <section name="body" file="/content/products/foobar1.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/products/foobar2" default="default">
+      <template name="default" extends="product">
+        <section name="body" file="/content/products/foobar2.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/products/foobar3" default="default">
+      <template name="default" extends="product">
+        <section name="body" file="/content/products/foobar3.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/ctrl" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/ctrl/index.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/sitemap" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/sitemap.en.php" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/contact" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/contact.en.php" />
+        <section name="left" file="" />
+      </template>
+    </page-templates>
+
+    <page-templates id="/contact/email" default="default">
+      <template name="default" extends="site.en">
+        <section name="body" file="/content/email/form.en.php" />
+      </template>
+      <template name="failed" extends="default">
+        <section name="body" file="/content/email/form.en.php" />
+      </template>
+      <template name="success" extends="default">
+        <section name="body" file="/content/email/success.en.php" />
+      </template>
+    </page-templates>
+  </template-mappings>
+</website>

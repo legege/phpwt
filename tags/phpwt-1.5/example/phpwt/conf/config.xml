@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<toolkit>
+  <import file="common.xml" />
+  <import file="english.xml" />
+  <import file="french.xml" />
+</toolkit>
