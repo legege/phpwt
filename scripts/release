@@ -29,7 +29,7 @@ mv $SOFTWARE/__VERSION__ $SOFTWARE/VERSION
 tar -zcf $SOFTWARE.tar.gz $SOFTWARE
 popd > /dev/null
 
-$SCRIPTS/upload -p phpwt -s $SOFTWARE -l Featured $TMPDIR/$SOFTWARE.tar.gz
+mv $TMPDIR/$SOFTWARE.tar.gz ~
 
 rm -Rf $TMPDIR
 
