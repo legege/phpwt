@@ -1,3 +1,0 @@
-<h1>Foobar 1</h1>
-
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce aliquet magna sit amet pede dapibus suscipit. Ut mollis tellus eget urna. Mauris enim urna, lacinia eu, blandit ac, interdum nec, felis. Aliquam erat volutpat. Donec porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer interdum felis ac dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris ac erat a nulla sollicitudin semper. Aliquam cursus consequat metus. Sed varius enim sed tortor.</p>
