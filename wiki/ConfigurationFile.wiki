@@ -1,0 +1,106 @@
+#summary Configuration file specification
+
+==== Legend ====
+{{{
+@: attribut
+@*: attribute (mandatory)
+}}}
+
+== Specifications ==
+{{{
+toolkit/import
+  @* file: the sub-config file to import (only valid in the first
+       config file)
+
+toolkit/website
+  @  lang
+}}}
+
+=== Defining Resources ===
+
+{{{
+toolkit/website/resource
+  @* name: identify this resource
+  @* file: the file (key=value)
+  Values in a resource file can be retrived with:
+    Resources::getString($key, $name)
+}}}
+
+=== Defining Pages ===
+
+{{{
+toolkit/website/page-definitions/page
+  @* id
+  @  action: a file where some application logic can take place. This
+       PHP file can return an array containing the following keys:
+         - data: this data can be retried in a template
+             with getActionData()
+         - template: the template's name to use to generate this page
+             (if not secified, the default template is used).
+  @  isController: if true, this page will be invoked when it can be the
+       parent of an inexistant page. (e.g. the page "/hello" is defined
+       as a controller. Thus, if the page "/hello/test" isn't defined,
+       the page "/hello" will be generated instead.)
+       Warning: 10 levels maximum.
+
+toolkit/website/page-definitions/page/property
+  @* name
+  @* value
+  Values can be retrived with: getPage()->getProperty($name)
+}}}
+
+=== Defining Page URI Mappings ===
+
+{{{
+toolkit/website/page-mappings/page
+  @* id
+  @  uri: the default URI of this page
+  @  link: the direct link
+
+toolkit/website/page-mappings/page/alias
+  @* uri: the alias URI
+}}}
+
+=== Defining Website Hierarchy ===
+
+{{{
+toolkit/website/hierarchy/*/page
+  @* uri: the page uri (this page should exist in the page-mappings)
+  @  visibility: this can be used to know when to display a page
+       {menu, hidden, yourvalue}. This value is returned for most
+       methods of the PageHierarchy class.
+
+toolkit/website/page-mappings/forwards/error
+  @* name: the error name (doesn't have to be a number, currently this
+       only used in the FrontController to simulate a 404 Not Found.)
+  @* pageuri: the destination
+}}}
+
+=== Defining Templates ===
+
+{{{
+toolkit/website/template-mappings/global-templates
+  ... see bellow
+
+toolkit/website/template-mappings/page-templates
+  @* id: the page ID for which it applies.
+  @* default: the default template's name (has to be a children of this
+       element)
+
+toolkit/website/template-mappings/*/template
+  @* name
+  @  base: the base file
+  @  extends: the parent template's name
+
+toolkit/website/template-mappings/*/template/section
+  @* name
+  @  file: the file to include when this section is included.
+
+toolkit/website/template-mappings/*/template/section/property
+  @* name
+  @* value
+  This value can be retrived with:
+    getTemplate()->getSectionProperty($section, $key)
+  The current section:
+    getTemplate()->getCurrentSectionName()
+}}}
