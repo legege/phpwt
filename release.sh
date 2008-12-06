@@ -1,8 +1,5 @@
 #!/bin/sh
 
-SCRIPTS=$(dirname $0)
-pushd $SCRIPTS/../ > /dev/null
-
 SVN="https://phpwt.googlecode.com/svn/"
 
 REV="`svn info | grep -o 'Revision: .*$' | sed 's/Revision: //'`"
@@ -16,7 +13,6 @@ SOFTWARE="phpwt-$RELEASE"
 echo "Building release $BUILD from $DATE"
 
 echo "Creating SVN tag for $SOFTWARE"
-svn del -m "Release for $SOFTWARE" $SVN/tags/$SOFTWARE > /dev/null
 svn copy -m "Release for $SOFTWARE" $SVN/trunk $SVN/tags/$SOFTWARE > /dev/null
 
 echo "Creating archive $SOFTWARE.tar.gz"
@@ -32,5 +28,3 @@ popd > /dev/null
 mv $TMPDIR/$SOFTWARE.tar.gz ~
 
 rm -Rf $TMPDIR
-
-popd > /dev/null
