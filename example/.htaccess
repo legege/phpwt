@@ -32,7 +32,8 @@ RewriteRule ^(.*) content/$1 [NS,L]
 # Now rewrite all other URL to the index.php file.
 # Be sure to list all languages of your web sites (en|fr|..)
 #
-RewriteRule ^(content/)?((en|fr)/?)?(.*)$ index.php?language=$3&uri=/$4 [NS,QSA,L]
+RewriteRule ^(content/)?(en|fr)$ index.php?language=$3&uri=/ [NS,QSA,L]
+RewriteRule ^(content/)?((en|fr)/)?(.*)$ index.php?language=$3&uri=/$4 [NS,QSA,L]
 
 #
 # Define common HTTP errors (required, it solves a bug with password
