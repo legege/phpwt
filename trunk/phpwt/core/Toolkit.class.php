@@ -79,8 +79,8 @@ class Toolkit {
    * @param id The page id.
    * @param lang The language (if not specified, the current language).
    */
-  public static function pageURL($id, $lang = '') {
-    if ($lang == '' && count($GLOBALS['language_array']) > 1) {
+  public static function pageURL($id, $lang = null) {
+    if ($lang == null && count($GLOBALS['language_array']) > 1) {
       $lang = self::getInstance()->getLanguage();
     }
 
