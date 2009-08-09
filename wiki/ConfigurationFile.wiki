@@ -56,6 +56,7 @@ toolkit/website/page-mappings/page
   @* id
   @  uri: the default URI of this page
   @  link: the direct link
+  @  ref: a link to a page ID
 
 toolkit/website/page-mappings/page/alias
   @* uri: the alias URI
