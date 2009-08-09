@@ -89,7 +89,11 @@ class Toolkit {
       $node = $nodes->item($nodes->length - 1);
       $uri = $node->getAttribute('uri');
       $link = $node->getAttribute('link');
+      $ref = $node->getAttribute('ref');
 
+      if (strlen($ref) > 0) {
+        return self::pageURL($ref, $lang);
+      }
       if (strlen($uri) > 0) {
         return self::resourceURL($uri, $lang);
       }
