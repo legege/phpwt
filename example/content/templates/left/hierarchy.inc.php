@@ -34,7 +34,12 @@ function renderSectionMenu($sitemap, $first = true) {
 }
 
 $parentPageID = getTemplate()->getSectionProperty(getTemplate()->getCurrentSectionName(), 'parent-page-id');
-$parentPageID = (is_null($parentPageID)) ? getPage()->getID() : $parentPageID;
+$parentPageIDs = getTemplate()->getSectionProperty(getTemplate()->getCurrentSectionName(), 'parent-page-ids');
+$parentPageID = (is_null($parentPageID) and is_null($parentPageIDs)) ? getPage()->getID() : $parentPageID;
+
+$parentPageIDList = preg_split("/,/", $parentPageIDs);
+$parentPageIDList = array_merge($parentPageIDList, Array($parentPageID));
+$parentPageIDList = array_unique($parentPageIDList);
 
 $showParent = getTemplate()->getSectionProperty(getTemplate()->getCurrentSectionName(), 'show-parent');
 $showParent = (is_null($showParent) || $showParent == 'true') ? true : false;
@@ -42,6 +47,12 @@ $showParent = (is_null($showParent) || $showParent == 'true') ? true : false;
 $showParentSiblings = getTemplate()->getSectionProperty(getTemplate()->getCurrentSectionName(), 'show-parent-siblings');
 $showParentSiblings = (is_null($showParentSiblings) || $showParentSiblings == 'false') ? false : true;
 
-$sitemap = PageHierarchy::getInstance()->getHierarchy(getPage()->getID(), 0, $parentPageID, $showParent);
-echo "<ul class=\"menu\">\n".RenderingUtil::indent(renderSectionMenu($sitemap), 2)."</ul>\n";
+foreach($parentPageIDList as $id) {
+  if(is_null($id) or $id == "") {
+    continue;
+  }
+
+  $sitemap = PageHierarchy::getInstance()->getHierarchy(getPage()->getID(), 0, $id, $showParent);
+  echo "<ul class=\"menu\">\n".RenderingUtil::indent(renderSectionMenu($sitemap), 2)."</ul>\n";
+}
 ?>
