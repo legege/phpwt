@@ -2,6 +2,10 @@
 
 <a href="<?php echo Toolkit::pageURL('/contact/email')?>">email form</a>
 
+<a href="<?php echo Toolkit::pageURL('/contact/email/redirect')?>" target="iredirect">email redirect</a>
+
+<iframe name="iredirect" width=1 height=1 frameborder=0 scrolling=no style="visibility:hidden; display:none;"></iframe>
+
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent ante massa, egestas et, gravida non, cursus at, diam. Vestibulum massa nisl, lacinia eu, semper vel, interdum nec, orci. Maecenas scelerisque justo vitae odio. Mauris scelerisque, arcu vel fermentum aliquet, dolor ligula sollicitudin risus, congue aliquam magna odio at mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque lacus. Ut convallis. In tempor leo facilisis augue. Nunc vel felis. Maecenas sed mi. Morbi felis libero, lacinia vitae, vehicula nec, scelerisque id, tellus. Morbi consequat gravida nunc. Vestibulum libero massa, mattis ac, viverra et, ullamcorper quis, libero. Suspendisse tellus nulla, interdum lacinia, molestie at, blandit sit amet, lacus.</p>
 
 <p>Pellentesque suscipit mattis libero. Vivamus purus enim, pharetra nec, aliquet in, euismod et, leo. Phasellus leo. Curabitur faucibus tellus sed nisi. Sed volutpat. Integer posuere iaculis sem. Donec eu dui. In massa purus, convallis a, elementum ac, fermentum quis, nisi. Praesent venenatis, arcu vel dapibus fermentum, massa metus mattis tortor, in tincidunt nisl quam at mi. Nam lectus leo, hendrerit eget, dictum at, lobortis quis, urna. Praesent blandit laoreet nulla. Pellentesque consequat nulla. Vestibulum eleifend blandit nibh. Ut sed justo.</p>

@@ -48,6 +48,9 @@
     <page id="/contact/email" action="/content/email/form.php">
       <property name="title" value="Email" />
     </page>
+    <page id="/contact/email/redirect" action="/content/email/redirect.php">
+      <property name="title" value="Courriel 302" />
+    </page>
   </page-definitions>
 
   <!--
