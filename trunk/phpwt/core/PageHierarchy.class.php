@@ -84,10 +84,11 @@ class PageHierarchy {
    * @param maxDepth The maximum depth
    * @param parentPageID The parent page id for this hierarchy.
    * @param includeParentPage Should the parent page be included?
+   * @param includeParentSiblings Should the parent siblings be included? Only work if parent is included.
    * @param depth The current depth (internal use only).
    * @return the page hierarchy.
    */
-  public function getHierarchy($currentPageID, $maxDepth = -1, $parentPageID = '', $includeParentPage = false, $depth = 0) {
+  public function getHierarchy($currentPageID, $maxDepth = -1, $parentPageID = '', $includeParentPage = false, $includeParentSiblings = false, $depth = 0) {
     if (strlen($parentPageID) > 0) {
       // Is there a mapping for this page?
       $parentPage = PageFactory::getInstance()->getPage($parentPageID);
@@ -127,17 +128,21 @@ class PageHierarchy {
     }
 
     if ($includeParentPage && strlen($parentPageID) > 0) {
-      $nodes =  Config::getInstance()->doXPathQuery("%BASE%/hierarchy//page[@id = '$parentPageID']");
-      $node = $nodes->item(0);
-
-      $entry = array();
-      $entry['visibility'] = $node->getAttribute('visibility');
-      $entry['page'] = $parentPage;
-      $entry['selected'] = ($currentPageID == $parentPageID);
-      $entry['child'] = $result;
-
+      $previous_result = $result;
       $result = array();
-      array_push($result, $entry);
+
+      $siblings = $this->getPageSiblings($parentPageID);
+      foreach ($siblings as $sibling_entry) {
+        if ($sibling_entry['page']->getID() == $parentPageID) {
+          $sibling_entry['selected'] = ($currentPageID == $parentPageID);
+          $sibling_entry['child-selected'] = true;
+          $sibling_entry['child'] = $previous_result;
+
+          array_push($result, $sibling_entry);
+        } else if ($includeParentSiblings) {
+          array_push($result, $sibling_entry);
+        }
+      }
     }
 
     return $result;
@@ -147,7 +152,7 @@ class PageHierarchy {
    * @param id The page id.
    * @return an array list or sibling pages for the page having the given id.
    */
-  public function getPageSibling($id) {
+  public function getPageSiblings($id) {
     // Is there a mapping for this page?
     $page = PageFactory::getInstance()->getPage($id);
     if (is_null($page)) {
@@ -157,13 +162,13 @@ class PageHierarchy {
     $id = $page->getID();
 
     // Get sibling nodes
-	  $nodes =  Config::getInstance()->doXPathQuery("%BASE%/hierarchy//page[@id = '$id']/parent::node()/child::page");
-	  if ($nodes->length == 0) {
+    $nodes =  Config::getInstance()->doXPathQuery("%BASE%/hierarchy//page[@id = '$id']/parent::node()/child::page");
+    if ($nodes->length == 0) {
       $nodes =  Config::getInstance()->doXPathQuery("%BASE%/hierarchy/page");
-	  }
+    }
 
     $result = array();
-    foreach($nodes as $node) {
+    foreach ($nodes as $node) {
       $pageID = $node->getAttribute('id');
       $page = PageFactory::getInstance()->getPage($pageID);
 

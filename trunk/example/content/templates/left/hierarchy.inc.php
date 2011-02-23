@@ -2,7 +2,7 @@
 function renderSectionMenu($sitemap, $first = true) {
   $result = '';
 
-  foreach($sitemap as $entry) {
+  foreach ($sitemap as $entry) {
     $page = $entry['page'];
 
     if ($entry['visibility'] != 'hidden') {
@@ -16,7 +16,7 @@ function renderSectionMenu($sitemap, $first = true) {
       
       $result .= $resultTemp1;
 
-      if (count($entry['child']) > 0) {
+      if (count($entry['child']) > 0 && ($entry['selected'] || $entry['child-selected'])) {
         $childResult = renderSectionMenu($entry['child'], false);
         if (strlen($childResult) > 0) {
           $result .= "\n".RenderingUtil::indent($childResult, 2);
@@ -52,7 +52,7 @@ foreach($parentPageIDList as $id) {
     continue;
   }
 
-  $sitemap = PageHierarchy::getInstance()->getHierarchy(getPage()->getID(), 0, $id, $showParent);
+  $sitemap = PageHierarchy::getInstance()->getHierarchy(getPage()->getID(), 1, $id, $showParent, $showParentSiblings);
   echo "<ul class=\"menu\">\n".RenderingUtil::indent(renderSectionMenu($sitemap), 2)."</ul>\n";
 }
 ?>
