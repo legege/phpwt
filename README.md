@@ -1,4 +1,4 @@
-# PHP WT
+# PHP Web Toolkit
 
 This project is a small PHP website toolkit created over years of web sites development. I've come up with this framework more recently and finally decided to release it under LGPL.
 
