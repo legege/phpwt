@@ -1,0 +1,15 @@
+## Template Functions ##
+  * getPage()
+  * getTemplate()
+  * getActionData()
+
+## Defining an action ##
+
+Example:
+```
+<?php
+// template: The template's name.
+// result: The action data.
+return array('template' => 'failed', 'result' => $data);
+?>
+```
