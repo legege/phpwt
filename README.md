@@ -20,15 +20,10 @@ Why another PHP framework? Well, as already said, this project comes from years 
 
 ## Example of website running PHPWT
 
- * [http://legege.com] (Georges-Etienne's web site)
- * [http://www.fermestadolphe.com]
- * [http://www.mariannelegendre.com]
- * [http://rubico.info] (Felix-Antoine's web site)
- * Intranet web sites
-
-## Contributions
-
- * I welcome your contribution. Simply [http://legege.com contact me]!
+ * [Georges-Etienne's web site](http://legege.com)
+ * [Felix-Antoine's web site](http://rubico.info)
+ * [Ferme St-Adolphe](http://www.fermestadolphe.com)
+ * [Marianne Legendre](http://www.mariannelegendre.com)
 
 ## FAQ (or not so frequent yet)
 
@@ -56,7 +51,7 @@ phpwt/
 All configurations are in XML files. You can have a single config.xml file or multiple ones all referenced in config.xml.
 
 Here is an example of a config.xml file.
-```
+```xml
 <?xml version="1.0" ?>
 <toolkit>
   <website lang="en">
